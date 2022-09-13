@@ -1,24 +1,27 @@
-import './App.css';
+import React from "react";
+import ReactDOM from "react-dom/client";
 import {
-  BrowserRouter as Router,
-  Route
+    BrowserRouter,
+    Routes,
+    Route,
 } from "react-router-dom";
 
-import Projects from "./Projects";
-import AboutMe from "./AboutMe";
+import Navbar from "./pages/Navbar";
+import AboutMe from "./pages/AboutMe";
 
 
-function App() {
-  return (
-    <Router>
-      <div className="App">
+export default function App(){
+     return(
+         <BrowserRouter>
+             <Routes>
+                 <Route path="/" element={<Navbar/>}>
+                     <Route index element={<AboutMe/>} />
+                 </Route>
+             </Routes>
+         </BrowserRouter>
 
-          <Route exact path="/" component={AboutMe}/>
-          <Route exact path="/projects" component={Projects}/>
+     )
+ }
 
-      </div>
-    </Router>
-  );
-}
-
-export default App;
+ const root = ReactDOM.createRoot(document.getElementById('root'));
+ root.render(<App/>);
